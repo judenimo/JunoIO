@@ -1,0 +1,142 @@
+Metadata-Version: 2.4
+Name: juno-io
+Version: 0.1.0
+Summary: Real-time flight-computer bridge between Juno: New Origins and Python.
+License-Expression: MIT
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=2.4.4
+Dynamic: license-file
+
+# JunoIO Python
+
+This folder is the minimal Python-side package for writing and running JunoIO scripts.
+
+It is intended to be usable on its own:
+
+1. install dependencies with `uv sync`
+2. create your own Python script
+3. run it with `uv run junoio run your_script.py`
+
+## What Is Included
+
+- `src/junoio/`
+  - the Python runtime, transport, CLI, and public API
+- `examples/script/`
+  - simple `script()` examples
+- `examples/fsm/`
+  - simple FSM examples
+- `examples/hello_display.py`
+  - a tiny starter script
+- `LICENSE`
+
+Not included here:
+
+- `.venv/`
+- `experimental/`
+- `tests/`
+- Unity-side source mirrors
+
+## Requirements
+
+- Python `3.13+`
+- `uv`
+- the JunoIO Unity mod running in Juno: New Origins
+
+## Install
+
+From this folder:
+
+```bash
+uv sync
+```
+
+## Write A Script
+
+Create a file like `my_script.py`:
+
+```python
+from junoio import JunoProgram
+
+
+class MyProgram(JunoProgram):
+    def on_start(self) -> None:
+        self.juno.display("JunoIO connected", duration=5)
+
+    def loop(self) -> None:
+        state = self.juno.state
+        if state.altitude_agl < 100.0:
+            self.juno.control.throttle = 0.6
+        else:
+            self.juno.control.throttle = 0.2
+```
+
+Run it with:
+
+```bash
+uv run junoio run my_script.py
+```
+
+## Useful Commands
+
+Inspect one live telemetry packet:
+
+```bash
+uv run junoio listen --count 1
+```
+
+Run the starter script:
+
+```bash
+uv run junoio run examples/hello_display.py
+```
+
+Run a built-in `script()` example:
+
+```bash
+uv run junoio run examples/script/timed_wait.py
+```
+
+Run a built-in FSM example:
+
+```bash
+uv run junoio run examples/fsm/timed_transition.py
+```
+
+## Core Supported Surface
+
+The intended v0.1 working surface includes:
+
+- `self.juno.state`
+- `self.juno.active_craft`
+- `self.juno.target`
+- `self.juno.control`
+- craft discovery / tracking helpers
+- bodies / parts / world query helpers
+- `loop()`
+- FSM helpers
+- `script()`
+- `wait_seconds(...)`
+- `wait_until(...)`
+
+Major controls include:
+
+- `throttle`
+- `pitch`
+- `roll`
+- `yaw`
+- `brake`
+- `translate_forward`
+- `translate_right`
+- `translate_up`
+- `slider_1` through `slider_4`
+- `translation_mode_enabled`
+
+## Notes
+
+- `loop()` is the top-level per-tick hook on the Python side
+- `script()` may be one-shot or generator-based
+- `wait_seconds(...)` and `wait_until(...)` are supported
+- only one `junoio run ...` process should normally be active at a time
+- run scripts while Juno is already in an active flight scene
