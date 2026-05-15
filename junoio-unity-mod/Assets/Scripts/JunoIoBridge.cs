@@ -346,56 +346,67 @@ namespace Assets.Scripts
                 if (_hasCommandedPitch)
                 {
                     craftScript.ActiveCommandPod.Controls.Pitch = _commandedPitch;
+                    craftScript.ActiveCommandPod.Controls.OffsetPitch = _commandedPitch;
                 }
 
                 if (_hasCommandedRoll)
                 {
                     craftScript.ActiveCommandPod.Controls.Roll = _commandedRoll;
+                    craftScript.ActiveCommandPod.Controls.OffsetRoll = _commandedRoll;
                 }
 
                 if (_hasCommandedYaw)
                 {
                     craftScript.ActiveCommandPod.Controls.Yaw = _commandedYaw;
+                    craftScript.ActiveCommandPod.Controls.OffsetYaw = _commandedYaw;
                 }
 
                 if (_hasCommandedBrake)
                 {
                     craftScript.ActiveCommandPod.Controls.Brake = _commandedBrake;
+                    craftScript.ActiveCommandPod.Controls.OffsetBrake = _commandedBrake;
                 }
 
                 if (_hasCommandedTranslateForward)
                 {
                     craftScript.ActiveCommandPod.Controls.TranslateForward = _commandedTranslateForward;
+                    craftScript.ActiveCommandPod.Controls.OffsetTranslateForward = _commandedTranslateForward;
                 }
 
                 if (_hasCommandedTranslateRight)
                 {
                     craftScript.ActiveCommandPod.Controls.TranslateRight = _commandedTranslateRight;
+                    craftScript.ActiveCommandPod.Controls.OffsetTranslateRight = _commandedTranslateRight;
                 }
 
                 if (_hasCommandedTranslateUp)
                 {
                     craftScript.ActiveCommandPod.Controls.TranslateUp = _commandedTranslateUp;
+                    craftScript.ActiveCommandPod.Controls.OffsetTranslateUp = _commandedTranslateUp;
                 }
 
                 if (_hasCommandedSlider1)
                 {
                     craftScript.ActiveCommandPod.Controls.Slider1 = _commandedSlider1;
+                    craftScript.ActiveCommandPod.Controls.OffsetSlider1 = _commandedSlider1;
                 }
 
                 if (_hasCommandedSlider2)
                 {
                     craftScript.ActiveCommandPod.Controls.Slider2 = _commandedSlider2;
+                    craftScript.ActiveCommandPod.Controls.OffsetSlider2 = _commandedSlider2;
                 }
 
                 if (_hasCommandedSlider3)
                 {
                     craftScript.ActiveCommandPod.Controls.Slider3 = _commandedSlider3;
+                    craftScript.ActiveCommandPod.Controls.OffsetSlider3 = _commandedSlider3;
                 }
 
                 if (_hasCommandedSlider4)
                 {
                     craftScript.ActiveCommandPod.Controls.Slider4 = _commandedSlider4;
+                    craftScript.ActiveCommandPod.Controls.OffsetSlider4 = _commandedSlider4;
                 }
 
                 if (_hasCommandedTranslationModeEnabled)
