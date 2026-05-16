@@ -1,0 +1,11 @@
+[package]
+name = "jio-fw"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+eframe = "0.31"
+egui = "0.31"
+egui_plot = "0.31"
+glam = "0.32.1"
+jio = { version = "0.1.0", path = "../jio" }
